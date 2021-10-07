@@ -1,12 +1,43 @@
+<div class="column is-one-third is-offset-one-third">
+<div class="title is-one">
+  Create an event
+</div>
+
 
 <%= simple_form_for(@event) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
+  <div class="field">
+    <div class="control">
+      <%= f.input :title, 
+                  label: "Title", 
+                  input_html: { class: "input" },
+                  label_html: { class: "label" },
+                  wrapper: false,
+                  autofocus: true %>
+      <%= f.input :description, 
+                  label: "Description", 
+                  input_html: { class: "input" },
+                  label_html: { class: "label" },
+                  wrapper: false,
+                  placeholder: "Tell us about the event!",
+                  autofocus: true %>
+      <%= f.input :title, 
+                  label: "Location", 
+                  input_html: { class: "input" },
+                  label_html: { class: "label" },
+                  wrapper: false,
+                  autofocus: true %>
+      <%= f.input :starts_time, 
+                  label: "Time and Date", 
+                  input_html: { class: "datetime" },
+                  label_html: { class: "label" },
+                  wrapper: false,
+                  autofocus: true %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, 
+                class: "button is-black" %>
 <% end %>
+</div>
