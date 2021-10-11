@@ -1,4 +1,22 @@
 <p id="notice"><%= notice %></p>
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter">
+    <br>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+ <div class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <p class="title is-5"><%=@event.title%></p>
+          <p><%=@event.description%></p>
+          <p> <%=@event.location%></p>
+          <p><%=@event.starts_time%></p>
+          <% unless @event.creator.nil?%>
+            <p><%=@event.creator.username%></p>
+          <%end%>
+        </p>
+      </div>
+    </div>
+  </article>
+</div>
