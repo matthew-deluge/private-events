@@ -17,7 +17,17 @@
                   <p><%=event.starts_time%></p>
                   <% unless event.creator.nil?%>
                     <p><%=event.creator.username%></p>
+                  <% if user_signed_in?%>
+                    <% unless event.creator.nil?%>
+                      <p><%=event.creator.username%></p>
+                    <%end%>
+                    <% unless event.attendees.include?(current_user) %>
+                      <%= link_to "RSVP", event, method: :rsvp, class:"button", data: { confirm: "Are you sure you want to attend this event?" } %>
+                    <%else%>
+                      <%=link_to "UN-RSVP", event, method: :unrsvp, class:"button", data: { confirm: "Are you sure you want to un-rsvp?" } %>
+                    <%end%>
                   <%end%>
+                <%end%>
                 </p>
               </div>
             </div>

@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /events or /events.json
   def index
@@ -55,6 +56,19 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def rsvp
+    @event = Event.find(params[:event_id])
+    @event.attendees.push(@current_user)
+    redirect_to root
+  end
+
+  def unrsvp
+    @event = Event.find(params[:event_id])
+    @event.attendees.delete(@current_user)
+    redirect_to root
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
