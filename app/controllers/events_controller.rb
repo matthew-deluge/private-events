@@ -58,15 +58,15 @@ class EventsController < ApplicationController
   end
 
   def rsvp
-    @event = Event.find(params[:event_id])
-    @event.attendees.push(@current_user)
-    redirect_to root
+    @event = Event.find(params[:id])
+    @event.attendees.push(current_user)
+    redirect_to @event
   end
 
   def unrsvp
-    @event = Event.find(params[:event_id])
-    @event.attendees.delete(@current_user)
-    redirect_to root
+    @event = Event.find(params[:id])
+    @event.attendees.delete(current_user)
+    redirect_to @event
   end
 
 
