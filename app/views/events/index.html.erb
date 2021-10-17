@@ -22,9 +22,10 @@
                       <p><%=event.creator.username%></p>
                     <%end%>
                     <% unless event.attendees.include?(current_user) %>
-                      <%= link_to "RSVP", event, method: :rsvp, class:"button", data: { confirm: "Are you sure you want to attend this event?" } %>
+                      <%= link_to "RSVP", event_sign_ups_path(event.id),method: :create, class:"button", data: { confirm: "Are you sure you want to attend this event?" } %>
                     <%else%>
-                      <%=link_to "UN-RSVP", event, method: :unrsvp, class:"button", data: { confirm: "Are you sure you want to un-rsvp?" } %>
+                      <% user_sign_up = SignUp.where(attendee_id: current_user.id, event_attended_id: event.id)%>
+                      <%=link_to "UN-RSVP", event_sign_up_url(event.id, 7), method: :delete, class:"button", data: { confirm: "Are you sure you want to un-rsvp?" } %>
                     <%end%>
                   <%end%>
                 <%end%>

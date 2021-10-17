@@ -57,18 +57,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def rsvp
-    @event = Event.find(params[:id])
-    @event.attendees.push(current_user)
-    redirect_to @event
-  end
-
-  def unrsvp
-    @event = Event.find(params[:id])
-    @event.attendees.delete(current_user)
-    redirect_to @event
-  end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
