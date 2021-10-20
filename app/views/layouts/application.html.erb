@@ -46,14 +46,17 @@
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign Up</strong>
-              </a>
-              <a class="button is-light">
-                Log In
-              </a>
-            </div>
+            <% if user_signed_in? %>
+              <div class="buttons">
+                <%= link_to current_user.username, edit_user_registration_path, class: "button"%>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button"%>
+              </div>
+            <% else %>
+              <div class="buttons">
+                <%= link_to "Sign Up", new_user_registration_path, class:"button has-background-grey has-text-white-ter" %>
+                <%= link_to "Log In", new_user_session_path, class:"button is-light" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -63,4 +66,12 @@
 
     <%= yield %>
   </body>
+
+<footer class="footer has-background-white">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Members Only</strong> by <a href="https://github.com/matthew-deluge">Matthew_Deluge</a>.
+    </p>
+  </div>
+</footer>
 </html>
