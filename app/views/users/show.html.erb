@@ -1,13 +1,13 @@
 <div class="columns">
   <div class="column is-half is-offset-one-quarter">
     <br>
-    <div class="is title"><%="#{@user.username}'s events"%></div>
-      <%=@user.created_events.each do |event|%>
+   <div class="is title"><%="#{@user.username}'s events"%></div>
+      <%@user.created_events.each do |event|%>
         <div class="box">
           <article class="media">
             <div class="media-content">
               <div class="content">
-                <p>
+                -<p>
                   <p class="title is-5"><%=event.title%></p>
                   <p><%=event.description%></p>
                   <p> <%=event.location%></p>
