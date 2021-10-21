@@ -1,22 +1,27 @@
 <p id="notice"><%= notice %></p>
 <div class="columns">
-  <div class="column is-half is-offset-one-quarter">
+  <div class="column is-one-third is-offset-one-third">
     <br>
-
- <div class="box">
-  <article class="media">
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <p class="title is-5"><%=@event.title%></p>
-          <p><%=@event.description%></p>
-          <p> <%=@event.location%></p>
-          <p><%=@event.starts_time%></p>
-          <% unless @event.creator.nil?%>
-            <p><%=@event.creator.username%></p>
-          <%end%>
-        </p>
-      </div>
+    <div class="box">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <p class="title is-four"><%=@event.title%></p>
+              <p>Description: <%=@event.description%></p>
+              <p>Location: <%=@event.location%></p>
+              <p>Start Time: <%=@event.starts_time%></p>
+              <% unless @event.creator.nil?%>
+                <p>Host: <%=@event.creator.name%></p>
+              <%end%>
+            </p>
+          </div>
+        </div>
+      </article>
     </div>
-  </article>
+      <div class="title is-four">Attendees</div>
+          <% @event.attendees.each do |attendee| %>
+            <li><%=attendee.name%><li>
+          <%end%>
+  </div>
 </div>
