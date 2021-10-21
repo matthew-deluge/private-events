@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class="columns">
-  <div class="column is-half is-offset-one-quarter">
+  <div class="column is-7 is-offset-1">
     <br>
-    <div class="is title">Events</div>
-      
-      <% @events.each do |event| %>
+    <div class="is title">Upcoming Events</div>
+      <% upcoming_events = @events.select { |event| event.starts_time > Date.today } %>
+      <% upcoming_events.each do |event| %>
         <div class="box">
           <article class="media">
             <div class="media-content">
@@ -14,9 +14,7 @@
                   <p class="title is-5"><%=event.title%></p>
                   <p><%=event.description%></p>
                   <p> <%=event.location%></p>
-                  <p><%=event.starts_time%></p>
-                  <% unless event.creator.nil?%>
-                    <p><%=event.creator.username%></p>
+                  <p><%=event.starts_time.strftime("%B %d %Y")%></p>
                   <% if user_signed_in?%>
                     <% unless event.creator.nil?%>
                       <p><%=event.creator.username%></p>
@@ -28,7 +26,6 @@
                       <%=link_to "UN-RSVP", event_sign_up_url(event.id, 7), method: :delete, class:"button", data: { confirm: "Are you sure you want to un-rsvp?" } %>
                     <%end%>
                   <%end%>
-                <%end%>
                 </p>
               </div>
             </div>
@@ -36,5 +33,31 @@
         </div>
       <% end %>
     </div>
+  <div class="column is-3 is-offset-1">
+    <br>
+    <div class="is title">Past Events</div>
+      <% past_events = @events.select { |event| event.starts_time < Date.today } %>
+        <% past_events.each do |event| %>
+          <div class="box">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <p class="title is-5"><%=event.title%></p>
+                    <p><%=event.description%></p>
+                    <p> <%=event.location%></p>
+                    <p><%=event.starts_time.strftime("%B %d %Y")%></p>
+                    <% if user_signed_in?%>
+                      <% unless event.creator.nil?%>
+                        <p><%=event.creator.username%></p>
+                      <%end%>
+                    <%end%>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
