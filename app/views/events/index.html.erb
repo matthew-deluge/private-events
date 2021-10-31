@@ -4,8 +4,7 @@
   <div class="column is-7 is-offset-1">
     <br>
     <div class="is title">Upcoming Events</div>
-      <% upcoming_events = @events.select { |event| event.starts_time > Date.today } %>
-      <% upcoming_events.each do |event| %>
+      <% Event.upcoming.each do |event| %>
         <div class="box">
           <article class="media">
             <div class="media-content">
@@ -33,11 +32,11 @@
         </div>
       <% end %>
     </div>
+
   <div class="column is-3 is-offset-1">
     <br>
     <div class="is title">Past Events</div>
-      <% past_events = @events.select { |event| event.starts_time < Date.today } %>
-        <% past_events.each do |event| %>
+        <% Event.past.each do |event| %>
           <div class="box">
             <article class="media">
               <div class="media-content">
