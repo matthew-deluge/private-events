@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_14_214556) do
+ActiveRecord::Schema.define(version: 2021_11_06_161946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2021_10_14_214556) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "creator_id"
-    t.index ["creator_id"], name: "index_events_on_creator_id", unique: true
   end
 
   create_table "sign_ups", force: :cascade do |t|
