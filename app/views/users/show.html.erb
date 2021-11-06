@@ -1,8 +1,28 @@
 <div class="columns">
-  <div class="column is-half is-offset-one-quarter">
+  <div class="column is-one-third is-offset-one-quarter">
     <br>
-   <div class="is title"><%="#{@user.username}'s events"%></div>
+   <div class="is title"><%="#{@user.name}'s events"%></div>
       <%@user.created_events.each do |event|%>
+        <div class="box">
+          <article class="media">
+            <div class="media-content">
+              <div class="content">
+                -<p>
+                  <p class="title is-5"><%=event.title%></p>
+                  <p><%=event.description%></p>
+                  <p> <%=event.location%></p>
+                  <p><%=event.starts_time%></p>
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      <%end%>
+    </div>
+    <div class="column is-one-fifth is-offset-one-eighth">
+    <br>
+   <div class="is title"><%="#{@user.name}'s RSVPs"%></div>
+      <%@user.events_attending.each do |event|%>
         <div class="box">
           <article class="media">
             <div class="media-content">
