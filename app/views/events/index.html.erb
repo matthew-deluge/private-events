@@ -10,7 +10,7 @@
             <div class="media-content">
               <div class="content">
                 <p>
-                  <p class="title is-5"><%=event.title%></p>
+                  <p class="title is-5"><%=link_to event.title, event_url(event.id) %></p>
                   <p><%=event.description%></p>
                   <p> <%=event.location%></p>
                   <p><%=event.starts_time.strftime("%B %d %Y")%></p>
@@ -42,7 +42,7 @@
               <div class="media-content">
                 <div class="content">
                   <p>
-                    <p class="title is-5"><%=event.title%></p>
+                    <p class="title is-5"><%=link_to event.title, event_url(event.id) %></p>
                     <p><%=event.description%></p>
                     <p> <%=event.location%></p>
                     <p><%=event.starts_time.strftime("%B %d %Y")%></p>
