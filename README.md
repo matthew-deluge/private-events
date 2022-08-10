@@ -1,4 +1,3 @@
 # README
-
-Written for The Odin Project "Private Event Assignment"
+A simple event creator written in Ruby on Rails
 
